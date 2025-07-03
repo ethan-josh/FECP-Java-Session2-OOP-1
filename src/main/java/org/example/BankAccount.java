@@ -30,25 +30,35 @@ public class BankAccount {
     public void deposit(double amount) {
         if (amount > 0) {
             this.availableBalance += amount;
-            System.out.println("Deposit successful! New balance: $" + this.availableBalance);
+            System.out.println("Deposit successful! New balance: " + this.availableBalance);
         } else {
             System.out.println("Invalid deposit amount!");
         }
     }
 
-    public void withdraw(){
-
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= availableBalance) {
+            availableBalance -= amount;
+            System.out.println("Withdrawal successful! New balance: " + availableBalance);
+        } else {
+            System.out.println("Invalid or insufficient funds for withdrawal!");
+        }
     }
 
     public void displayInformation() {
         System.out.println("Account Number: " + accountNumber);
         System.out.println("Account Holder: " + accountName);
-        System.out.println("Available Balance: $" + availableBalance);
+        System.out.println("Available Balance: " + availableBalance);
     }
 
-
-    public void getAccountNumber(){
-
+    public String getAccountNumber(){
+        return this.accountNumber;
     }
+
+    public double getAvailableBalance(){
+        //System.out.println(this.availableBalance);
+        return this.availableBalance;
+    }
+
 
 }
