@@ -1,9 +1,9 @@
 package org.example;
 
 public class BankAccount {
-    public String accountNumber;
-    public String accountName;
-    public double availableBalance;
+    private String accountNumber;
+    private String accountName;
+    private double availableBalance;
 
     /*
     Methods:
@@ -13,17 +13,39 @@ public class BankAccount {
     Get Account Number: Returns account number (used for searching)
      */
 
-    public void deposit(){
+    public BankAccount(String accountNumber, String accountName, double availableBalance) {
+        this.accountNumber = accountNumber;
+        this.accountName = accountName;
+        this.availableBalance = availableBalance;
+    }
 
+    public BankAccount(String accountNumber, String accountName) {
+        this.accountNumber = accountNumber;
+        this.accountName = accountName;
+    }
+    public BankAccount(double availableBalance){
+        this.availableBalance = availableBalance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            this.availableBalance += amount;
+            System.out.println("Deposit successful! New balance: $" + this.availableBalance);
+        } else {
+            System.out.println("Invalid deposit amount!");
+        }
     }
 
     public void withdraw(){
 
     }
 
-    public void displayInformation(){
-
+    public void displayInformation() {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Account Holder: " + accountName);
+        System.out.println("Available Balance: $" + availableBalance);
     }
+
 
     public void getAccountNumber(){
 
